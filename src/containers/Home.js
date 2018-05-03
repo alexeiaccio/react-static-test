@@ -1,10 +1,11 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { withSiteData } from 'react-static'
-//
-import logoImg from '../logo.png'
+import { Link as PrismicLink } from 'prismic-reactjs'
 
-export default withSiteData(({ title, description, keywords }) => (
+export default withSiteData(({
+  title, description, keywords, maillink,
+}) => (
   <div>
     <Helmet>
       <title>{title}</title>
@@ -12,6 +13,10 @@ export default withSiteData(({ title, description, keywords }) => (
       <meta name="keywords" content={keywords} />
     </Helmet>
     <h1 style={{ textAlign: 'center' }}>Welcome to {title}</h1>
-    <img src={logoImg} alt="logo" />
+    {maillink &&
+      <a href={PrismicLink.url(maillink)} {...maillink.target}>
+        {maillink.url.replace('mailto:', '')}
+      </a>
+    }
   </div>
 ))

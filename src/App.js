@@ -88,26 +88,39 @@ const AnimatedRoutes = getContext({
           keyAccessor={d => d.id}
           start={() => ({
             opacity: [0],
-            scale: 1,
+            scale: [0.9],
             translateY: [10],
           })}
-          enter={() => ({
-            opacity: [1],
-            translateY: [0],
-            timing: { duration: 1000, delay: 200, ease: easeQuadOut },
-          })}
+          enter={() => ([
+            {
+              opacity: [1],
+              timing: { duration: 600, delay: 200, ease: easeQuadOut },
+            },
+            {
+              scale: [1],
+              translateY: [0],
+              timing: { duration: 200, delay: 200, ease: easeQuadOut },
+            },
+          ])}
           update={() => ({
             opacity: [1],
+            scale: [1],
           })}
-          leave={() => ({
-            opacity: [0],
-            translateY: [-10],
-            timing: { duration: 1000, ease: easeQuadOut },
-          })}
+          leave={() => ([
+            {
+              opacity: [0],
+              timing: { duration: 600, delay: 200, ease: easeQuadOut },
+            },
+            {
+              scale: [1.1],
+              translateY: [-10],
+              timing: { duration: 400, ease: easeQuadOut },
+            },
+          ])}
         >
           {nodes => (
             <div style={{ position: 'relative' }}>
-              {nodes.map(({ key, data, state: { opacity, translateY } }) => {
+              {nodes.map(({ key, data, state: { opacity, translateY, scale } }) => {
                 // Here, we override the router context with the one that was
                 // passed with each route
                 const PreservedRouterContext = withContext(
@@ -128,7 +141,7 @@ const AnimatedRoutes = getContext({
                       right: 0,
                       bottom: 0,
                       left: 0,
-                      transform: `translateY(${translateY}px)`,
+                      transform: `translateY(${translateY}px) scale(${scale})`,
                       opacity,
                     }}
                   >

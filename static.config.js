@@ -10,6 +10,7 @@ export default {
       title: homepage[0].title[0].text,
       description: homepage[0].seodescription,
       keywords: homepage[0].seokeywords,
+      maillink: homepage[0].maillink,
     }
   },
   getRoutes: async () => {
