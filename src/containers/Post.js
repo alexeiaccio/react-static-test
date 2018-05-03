@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { withRouteData, Link } from 'react-static'
 import { RichText } from 'prismic-reactjs'
 //
@@ -13,8 +13,10 @@ export default withRouteData(({ post }) => (
     <br />
     {RichText.render(post.title, linkResolver)}
     <img src={post.image.url} alt={post.title} />
-    {post.description.map(paragraph => (
-      RichText.render(paragraph, linkResolver)
+    {post.description.map((paragraph, i) => (
+      <Fragment key={i} >
+        {RichText.render(paragraph, linkResolver)}
+      </Fragment>
     ))}
   </div>
 ))
