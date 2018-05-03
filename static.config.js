@@ -1,11 +1,11 @@
-import axios from 'axios'
+import fetchData from './src/prismic/fetch'
 
 export default {
   getSiteData: () => ({
     title: 'React Static',
   }),
   getRoutes: async () => {
-    const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    const posts = await fetchData()
     return [
       {
         path: '/',
