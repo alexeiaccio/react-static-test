@@ -3,11 +3,16 @@ import { ServerStyleSheet } from 'styled-components'
 import fetchData from './src/prismic/fetch'
 
 export default {
-  getSiteData: () => ({
-    title: 'React Static',
-  }),
+  getSiteData: async () => {
+    const prismicData = await fetchData()
+    const homepage = prismicData.filter(({ type }) => type === 'homepage')
+    return {
+      title: homepage[0].title[0].text,
+    }
+  },
   getRoutes: async () => {
-    const posts = await fetchData()
+    const prismicData = await fetchData()
+    const posts = prismicData.filter(({ type }) => type === 'artwork')
     return [
       {
         path: '/',

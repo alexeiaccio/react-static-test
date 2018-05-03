@@ -6,7 +6,7 @@ const Prismic = require('prismic-javascript')
 export default async function getData () {
   const api = await Prismic.getApi(apiEndpoint, { accessToken: apiToken })
   const response = await api.query(
-    Prismic.Predicates.at('document.type', 'artwork'),
+    '',
     { orderings: '[document.first_publication_date]' }
   )
 

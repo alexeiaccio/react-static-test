@@ -4,7 +4,7 @@ import { RichText } from 'prismic-reactjs'
 //
 const linkResolver = doc => {
   if (doc.type === 'blog') return `/post/${doc.uid}`
-  return `/doc/${doc.id}`
+  return '/'
 }
 
 export default withRouteData(({ post }) => (
