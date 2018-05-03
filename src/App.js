@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { Helmet } from 'react-helmet'
 import { Router, Route, Link, cleanPath } from 'react-static'
 import { easeQuadOut } from 'd3-ease'
 import { NodeGroup } from 'react-move'
@@ -144,18 +145,24 @@ const AnimatedRoutes = getContext({
 ))
 
 const App = () => (
-  <Router>
-    <AppStyles>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/blog">Blog</Link>
-      </nav>
-      <div className="content">
-        <Routes component={AnimatedRoutes} />
-      </div>
-    </AppStyles>
-  </Router>
+  <Fragment>
+    <Helmet
+      titleTemplate="ACCIO - %s"
+      defaultTitle="ACCIO"
+    />
+    <Router>
+      <AppStyles>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/blog">Blog</Link>
+        </nav>
+        <div className="content">
+          <Routes component={AnimatedRoutes} />
+        </div>
+      </AppStyles>
+    </Router>
+  </Fragment>
 )
 
 export default hot(module)(App)
