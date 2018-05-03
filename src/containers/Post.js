@@ -15,7 +15,7 @@ export default withRouteData(({ post }) => (
     <img src={post.image.url} alt={post.title} />
     {post.description.map((paragraph, i) => (
       <Fragment key={i} >
-        {RichText.render(paragraph, linkResolver)}
+        {RichText.render(paragraph.richtext, linkResolver)}
       </Fragment>
     ))}
   </div>
