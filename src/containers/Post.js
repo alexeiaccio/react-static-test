@@ -12,7 +12,7 @@ export default withRouteData(({ post }) => (
     <Link to="/blog/">{'<'} Back</Link>
     <br />
     {RichText.render(post.title, linkResolver)}
-    <img src={post.image} alt={post.title} />
+    <img src={post.image.url} alt={post.title} />
     {post.description.map(paragraph => (
       RichText.render(paragraph, linkResolver)
     ))}

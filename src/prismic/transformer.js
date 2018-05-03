@@ -8,12 +8,6 @@ export default function transform (prismicData) {
     const value = entries[i][1]
 
     switch (name) {
-      case 'title':
-        result[name] = value
-        break
-      case 'image':
-        result[name] = value.url
-        break
       case 'description':
         result[name] = value.map(item => item.richtext)
         break
