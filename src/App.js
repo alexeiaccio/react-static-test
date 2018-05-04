@@ -164,6 +164,10 @@ const App = () => (
     <Helmet
       titleTemplate="ACCIO - %s"
       defaultTitle="ACCIO"
+      meta={[{
+        name: 'apple-mobile-web-app-title',
+        content: 'ACCIO',
+      }]}
       links={[{
         rel: 'icon',
         type: 'image/png',

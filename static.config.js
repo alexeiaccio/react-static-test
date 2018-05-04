@@ -69,4 +69,12 @@ export default {
       )
     }
   },
+  webpack: (config, { stage }) => {
+    if (stage === 'prod') {
+      config.entry = ['babel-polyfill', config.entry]
+    } else if (stage === 'dev') {
+      config.entry = ['babel-polyfill', ...config.entry]
+    }
+    return config
+  },
 }

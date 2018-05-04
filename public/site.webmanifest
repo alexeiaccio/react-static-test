@@ -1,6 +1,7 @@
 {
-  "name": "",
-  "short_name": "",
+  "manifest_version": 2,
+  "name": "ACCIO",
+  "short_name": "ACCIO",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
